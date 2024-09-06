@@ -8,7 +8,7 @@
         body {
             font-family: Arial, sans-serif;
             margin: 0;
-            overflow-x: hidden; /* Prevent horizontal scrolling */
+            overflow-x: hidden;
             display: flex;
             flex-direction: column;
             min-height: 100vh;
@@ -20,7 +20,6 @@
             height: 70px;
             text-align: center;
             width: 100%;
-            
         }
 
         .order-form-header h1 {
@@ -68,7 +67,7 @@
             border-radius: 4px;
             font-size: 16px;
             color: #000000;
-            box-sizing: border-box; /* Include padding and border in the element's total width and height */
+            box-sizing: border-box;
         }
 
         .form-row {
@@ -121,7 +120,6 @@
             background-color: #0084ff;
         }
 
-        /* Responsive Design */
         @media (max-width: 768px) {
             .order-form {
                 max-width: 100%;
@@ -163,12 +161,12 @@
         }
 
         footer {
-            background-color: #333; /* Changed to dark blue */
+            background-color: #333;
             color: white;
             padding: 20px;
             text-align: center;
             width: 100%;
-            box-sizing: border-box; /* Include padding in the element's total width and height */
+            box-sizing: border-box;
         }
 
         footer .container {
@@ -221,42 +219,43 @@
     <div class="order-form-container">
         <div class="order-form">
             <h2>Enter Delivery Details</h2><br>
-            <form id="orderForm" action="https://docs.google.com/forms/u/0/d/e/1FAIpQLSe3tPBjeV19FAStI3XLo7RcxKXLeA9XZVJqed-u6Q1u0XnN_A/formResponse" method="POST">
-                <div class="form-row">
+            <form id="orderForm" action="https://script.google.com/macros/s/AKfycbzo69nyUyqy8ihtVqRp9aebsETdUBrJ87XosAvTpFE8ry5Qx9QXxZNEblOwjJweh6ny/exec" method="POST" onsubmit="redirectToThankYou(event)">
+              <input type="hidden" name="Product Name" value="Product 1">  
+              <div class="form-row">
                     <div>
                         <label for="name">Full Name</label>
-                        <input type="text" id="name" name="entry.899918621" required>
+                        <input type="text" id="name" name="Name" required>
                     </div>
                     <div>
                         <label for="phone">Phone Number</label>
-                        <input type="tel" id="phone" name="entry.117314178" required>
+                        <input type="tel" id="phone" name="Phone" required>
                     </div>
                 </div>
 
                 <label>Size</label>
                 <div class="size-options">
                     <label>
-                        <input type="radio" name="entry.2053488342" value="XS" required>
+                        <input type="radio" name="Size" value="XS" required>
                         XS
                     </label>
                     <label>
-                        <input type="radio" name="entry.2053488342" value="S" required>
+                        <input type="radio" name="Size" value="S" required>
                         S
                     </label>
                     <label>
-                        <input type="radio" name="entry.2053488342" value="M" required>
+                        <input type="radio" name="Size" value="M" required>
                         M
                     </label>
                     <label>
-                        <input type="radio" name="entry.2053488342" value="L" required>
+                        <input type="radio" name="Size" value="L" required>
                         L
                     </label>
                     <label>
-                        <input type="radio" name="entry.2053488342" value="XL" required>
+                        <input type="radio" name="Size" value="XL" required>
                         XL
                     </label>
                     <label>
-                        <input type="radio" name="entry.2053488342" value="XXL" required>
+                        <input type="radio" name="Size" value="XXL" required>
                         XXL
                     </label>
                 </div>
@@ -264,28 +263,28 @@
                 <div class="form-row">
                     <div>
                         <label for="pincode">Pin Code</label>
-                        <input type="tel" id="pincode" name="entry.802883487" required>
+                        <input type="tel" id="pincode" name="Pin Code" required>
                     </div>
                     <div>
                         <label for="city">City</label>
-                        <input type="text" id="city" name="entry.415256235" required>
+                        <input type="text" id="city" name="City" required>
                     </div>
                 </div>
 
                 <label for="state">State</label>
-                <input type="text" id="state" name="entry.2015720985" required>
+                <input type="text" id="state" name="State" required>
 
                 <label for="address">House No, Building Name</label>
-                <input type="text" id="address" name="entry.1228483038" required>
+                <input type="text" id="address" name="House No, Building Name" required>
 
                 <label for="road">Road Name, Area, Colony</label>
-                <input type="text" id="road" name="entry.498787894" required>
+                <input type="text" id="road" name="Road Name, Area, Colony" required>
 
                 <label for="landmark">Nearby Famous Shop/Mall/Landmark</label>
-                <input type="text" id="landmark" name="entry.984024327">
+                <input type="text" id="landmark" name="Landmark">
 
                 <label for="comments">Additional Comments</label>
-                <textarea id="comments" name="entry.1735259301" rows="3"></textarea>
+                <input type="text" id="comments" name="Comments"></textarea>
 
                 <button type="submit">Place Order</button>
             </form>
@@ -303,12 +302,27 @@
     </footer>
 
     <script>
-        document.getElementById("orderForm").onsubmit = function() {
-            setTimeout(function() {
-                window.location.href = "https://xstylle.github.io/Xstylleform846513238465132458451294562145612845124851845184516132/thankyou.html"; // Replace with your desired URL
-            }, 1000); // Adjust the delay as needed
-            return true; // Allow the form to be submitted
-        };
-    </script>
+        function redirectToThankYou(event) {
+            event.preventDefault();
+            const form = document.getElementById('orderForm');
+            const url = form.action;
+            const formData = new FormData(form);
+
+            fetch(url, {
+                method: 'POST',
+                body: formData
+            }).then(response => {
+                if (response.ok) {
+                    window.location.href = "https://xstylle.github.io/Xstylleform846513238465132458451294562145612845124851845184516132/thankyou.html";
+                } else {
+                    alert('There was an error with your submission. Please try again.');
+                }
+            }).catch(error => {
+                alert('There was an error with your submission. Please try again.');
+
+          });
+      };
+  </script>
+  
 </body>
 </html>
