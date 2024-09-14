@@ -58,6 +58,20 @@
             height: auto;
             margin-right: 10px;
         }
+        .back-button {
+            margin-top: 20px;
+            background-color: #ff7b00;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            font-size: 26px;
+            cursor: pointer;
+            width: 300px;
+            border-radius: 50px;
+        }
+        .back-button:hover {
+            background-color: #e66b00;
+        }
         footer {
             text-align: center;
             position: relative;
@@ -66,23 +80,27 @@
 </head>
 <body>
 
-    <header>
-        <center><h1>XSTYLLE</h1></center>
-    </header>
-
     <div class="content">
         <div class="thank-you">Thank you.</div>
         <div class="order-success">Your order was placed successfully.</div>
-        <div class="price">Order total: ₹499</div>
+        <div class="price">Order total: ₹399/-</div>
         
         <div class="email-info">
-            
             <span>Our Executive will contact you shortly to Confirm your order</span>
         </div>
+        
+        <!-- Back Button --><br><br>
+        <button class="back-button" onclick="window.location.href='https://sites.google.com/view/histu/home'">Shop More</button>
     </div>
 
     <footer>
-        <p>&copy; 2024 Xstylle. All rights reserved.</p>
+        <div class="container">
+            <p>Xstylle.com</p>
+            <p>Contact us at: <a href="mailto:xstyllehr@gmail.com">xstyllehr@gmail.com</a></p>
+            <div class="rights">
+                <p>&copy; 2024 Xstylle.com. All Rights Reserved.</p>
+            </div>
+        </div>
     </footer>
 
 </body>
